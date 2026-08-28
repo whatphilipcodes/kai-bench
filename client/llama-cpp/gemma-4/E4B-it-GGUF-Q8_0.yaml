@@ -1,0 +1,30 @@
+schemaVersion: "2.0"
+
+benchmark:
+  model: "ggml-org/gemma-4-E4B-it-GGUF:Q8_0"
+  tokenizer:
+    name: "google/gemma-4-E4B-it"
+  
+  endpoint:
+    type: "chat"
+    url: "http://localhost:30000"
+    streaming: true
+    extra:
+      ignore_eos: true
+    
+  dataset:
+    type: "synthetic"
+    prompts:
+      isl:
+        mean: 1024
+      osl:
+        mean: 256
+        
+  phases:
+    - name: "profiling"
+      type: "concurrency"
+      concurrency: 1
+      requests: 10
+        
+  artifacts:
+    dir: "./E4B-it-GGUF-Q8_0"
