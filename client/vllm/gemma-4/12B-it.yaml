@@ -1,9 +1,9 @@
 schemaVersion: "2.0"
 
 benchmark:
-  model: "ggml-org/gemma-4-E4B-it-GGUF:Q8_0"
+  model: "unsloth/gemma-4-12b-it-NVFP4"
   tokenizer:
-    name: "google/gemma-4-E4B-it"
+    name: "unsloth/gemma-4-12b-it-NVFP4"
   
   endpoint:
     type: "chat"
@@ -27,4 +27,4 @@ benchmark:
       requests: 10
         
   artifacts:
-    dir: "./E4B-it-GGUF-Q8_0"
+    dir: "./12B-it-NVFP4"

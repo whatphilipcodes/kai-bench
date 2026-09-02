@@ -1,0 +1,9 @@
+model-path: "google/gemma-4-12B-it"
+host: "127.0.0.1"
+port: 30000
+speculative-algorithm: "NEXTN"
+speculative-draft-model-path: "google/gemma-4-12B-it-assistant"
+speculative-num-steps: 5
+speculative-num-draft-tokens: 6
+speculative-eagle-topk: 1
+mem-fraction-static 0.65

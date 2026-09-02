@@ -1,7 +1,7 @@
 #!/bin/bash
 # run-server.sh
 
-MODEL="ggml-org/gemma-4-12B-it-GGUF:Q4_0"
+MODEL="unsloth/gemma-4-12B-it-qat-GGUF"
 
 /home/philip/repos/llama.cpp/build/bin/llama-server \
   -hf $MODEL \

@@ -1,4 +1,4 @@
-model: google/gemma-4-31B-it-qat-w4a16-ct
+model: "google/gemma-4-31B-it-qat-w4a16-ct"
 host: "127.0.0.1"
 port: 30000
 max-model-len: 8192

@@ -1,0 +1,9 @@
+model: "unsloth/gemma-4-12b-it-NVFP4"
+host: "127.0.0.1"
+port: 30000
+max-model-len: 8192
+gpu-memory-utilization: 0.4
+# speculative-config:
+#   model: "google/gemma-4-12b-it-assistant"
+#   num_speculative_tokens: 2
+uvicorn-log-level: "info"

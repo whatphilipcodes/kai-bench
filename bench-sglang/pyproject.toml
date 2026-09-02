@@ -1,22 +1,18 @@
 [project]
-name = "bench-vllm"
+name = "bench-sglang"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = "~=3.13.0"
 authors = [{ name = "whatphilipcodes", email = "gerdes.philip@gmail.com" }]
 dependencies = [
-  "flashinfer-python>=0.6.16.post3",
-  "nvidia-cutlass-dsl>=4.6.2",
-  "torch>=2.13.0",
-  "torchaudio>=2.11.0",
+  "sglang>=0.5.18",
+  "sglang-kernel>=0.4.6.post1",
   "torchcodec>=0.16.0",
-  "torchvision>=0.28.0",
-  "vllm>=0.28.0",
 ]
 
 [project.scripts]
-bench-vllm = "bench_vllm:main"
+bench-sglang = "bench_sglang:main"
 
 [dependency-groups]
 dev = [
@@ -31,14 +27,23 @@ build-backend = "uv_build"
 [tool.uv]
 prerelease = "allow"
 environments = ["sys_platform == 'linux' and platform_machine == 'aarch64'"]
+# override-dependencies = ["transformers==5.12.1", "tokenizers==0.22.2"] # sglang pyproject.toml
+# override-dependencies = ["transformers==5.16.1", "tokenizers==0.23.1"]
 
 [tool.uv.sources]
 torch = { index = "pytorch-cu130" }
-torchcodec = { index = "pytorch-cu130" }
 torchaudio = { index = "pytorch-cu130" }
 torchvision = { index = "pytorch-cu130" }
+torchcodec = { index = "pytorch-cu130" }
+sglang-kernel = { index = "sglang-cu130" }
+sglang = { git = "https://github.com/sgl-project/sglang.git", subdirectory = "python", rev = "9a05b47" }
 
 [[tool.uv.index]]
 name = "pytorch-cu130"
 url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[[tool.uv.index]]
+name = "sglang-cu130"
+url = "https://sgl-project.github.io/whl/cu130"
 explicit = true

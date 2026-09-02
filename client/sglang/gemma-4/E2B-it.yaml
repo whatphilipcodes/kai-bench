@@ -1,9 +1,9 @@
 schemaVersion: "2.0"
 
 benchmark:
-  model: "ggml-org/gemma-4-12B-it-GGUF:Q4_0"
+  model: "google/gemma-4-E2B-it"
   tokenizer:
-    name: "google/gemma-4-12B-it"
+    name: "google/gemma-4-E2B-it"
   
   endpoint:
     type: "chat"
@@ -27,4 +27,4 @@ benchmark:
       requests: 10
         
   artifacts:
-    dir: "./12B-it-GGUF-Q4_0"
+    dir: "./E2B-it"

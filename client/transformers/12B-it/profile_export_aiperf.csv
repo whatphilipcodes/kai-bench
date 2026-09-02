@@ -1,0 +1,61 @@
+Metric,avg,min,max,sum,p1,p5,p10,p25,p50,p75,p90,p95,p99,std
+Active Decode Throughput (tokens/sec),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Active Decode Throughput Per User (tokens/sec/user),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Active Prefill Throughput (tokens/sec),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Active Prefill Throughput Per User (tokens/sec/user),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Active Total Throughput (tokens/sec),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Credit-to-Start Latency (ms),2.36,2.17,2.56,4.73,2.17,2.19,2.21,2.27,2.36,2.46,2.52,2.54,2.55,0.19
+E2E Output Token Throughput (tokens/sec/user),5.41,5.40,5.42,10.82,5.40,5.40,5.40,5.40,5.41,5.41,5.42,5.42,5.42,0.01
+Effective Concurrency,1.00,0.00,1.00,,,,,,1.00,,1.00,1.00,1.00,0.01
+Effective Decode Concurrency,0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Effective Decode Throughput (tokens/sec),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Effective Decode Throughput Per User (tokens/sec/user),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Effective Latency (CO-aware) (ms),48080.81,41335.47,54826.16,96161.63,41470.38,42010.01,42684.54,44708.14,48080.81,51453.48,53477.09,54151.62,54691.25,6745.34
+Effective Prefill Concurrency,0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Effective Prefill Throughput (tokens/sec),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Effective Prefill Throughput Per User (tokens/sec/user),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Effective Total Throughput (tokens/sec),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+HTTP Blocked (ms),0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+HTTP Chunks Received,1.00,1.00,1.00,2.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,0.00
+HTTP Chunks Sent,1.00,1.00,1.00,2.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,0.00
+HTTP Connecting (ms),1.39,0.00,2.79,2.79,0.03,0.14,0.28,0.70,1.39,2.09,2.51,2.65,2.76,1.39
+HTTP Connection Overhead (ms),2.27,0.00,4.54,4.54,0.05,0.23,0.45,1.14,2.27,3.41,4.09,4.31,4.50,2.27
+HTTP Connection Reused (ratio),0.50,0.00,1.00,1.00,0.01,0.05,0.10,0.25,0.50,0.75,0.90,0.95,0.99,0.50
+HTTP Data Received (KB),1.43,1.29,1.57,2.86,1.29,1.30,1.32,1.36,1.43,1.50,1.54,1.56,1.57,0.14
+HTTP Data Sent (KB),0.19,0.18,0.19,0.37,0.18,0.18,0.18,0.18,0.19,0.19,0.19,0.19,0.19,0.01
+HTTP DNS Lookup (ms),0.88,0.00,1.75,1.75,0.02,0.09,0.18,0.44,0.88,1.31,1.58,1.66,1.73,0.88
+HTTP Duration (excl. conn) (ms),48078.30,41333.21,54823.39,96156.60,41468.11,42007.72,42682.23,44705.76,48078.30,51450.85,53474.37,54148.88,54688.49,6745.09
+HTTP Receiving (ms),0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+HTTP Sending (ms),1.77,0.24,3.30,3.55,0.27,0.40,0.55,1.01,1.77,2.54,3.00,3.15,3.27,1.53
+HTTP Total Time (ms),48080.53,41333.19,54827.87,96161.06,41468.14,42007.93,42682.66,44706.86,48080.53,51454.20,53478.40,54153.14,54692.92,6747.34
+HTTP Waiting (TTFB) (ms),48076.49,41332.95,54820.03,96152.98,41467.82,42007.30,42681.66,44704.72,48076.49,51448.26,53471.32,54145.67,54685.15,6743.54
+Input Sequence Length (tokens),16.00,16.00,16.00,32.00,16.00,16.00,16.00,16.00,16.00,16.00,16.00,16.00,16.00,0.00
+OSL Mismatch Diff % (%),2500.00,2140.00,2860.00,5000.00,2147.20,2176.00,2212.00,2320.00,2500.00,2680.00,2788.00,2824.00,2852.80,360.00
+Output Sequence Length (tokens),260.00,224.00,296.00,520.00,224.72,227.60,231.20,242.00,260.00,278.00,288.80,292.40,295.28,36.00
+Output Token Count (tokens),260.00,224.00,296.00,520.00,224.72,227.60,231.20,242.00,260.00,278.00,288.80,292.40,295.28,36.00
+Request Latency (ms),48078.45,41333.30,54823.60,96156.90,41468.21,42007.82,42682.33,44705.88,48078.45,51451.02,53474.57,54149.08,54688.69,6745.15
+Tokens In Flight (tokens),0.00,0.00,0.00,,,,,,0.00,,0.00,0.00,0.00,0.00
+Usage Completion Tokens (tokens),261.00,225.00,297.00,522.00,225.72,228.60,232.20,243.00,261.00,279.00,289.80,293.40,296.28,36.00
+Usage Completion Diff % (%),0.39,0.34,0.45,0.78,0.34,0.34,0.35,0.36,0.39,0.42,0.44,0.44,0.45,0.05
+Usage Prompt Tokens (tokens),29.50,29.00,30.00,59.00,29.01,29.05,29.10,29.25,29.50,29.75,29.90,29.95,29.99,0.50
+Usage Prompt Diff % (%),84.38,81.25,87.50,168.75,81.31,81.56,81.88,82.81,84.38,85.94,86.88,87.19,87.44,3.12
+Usage Total Tokens (tokens),290.50,255.00,326.00,581.00,255.71,258.55,262.10,272.75,290.50,308.25,318.90,322.45,325.29,35.50
+
+Metric,Value
+Benchmark Duration (sec),96.16
+Input Token Throughput (tokens/sec),0.33
+OSL Mismatch Count,2.00
+Output Token Throughput (tokens/sec),5.41
+Request Count,2.00
+Request Throughput (requests/sec),0.02
+Total Input Sequence Length (tokens),32.00
+Total Output Sequence Length (tokens),520.00
+Total Output Tokens (tokens),520.00
+Total Token Throughput (tokens/sec),5.74
+Total Usage Completion Tokens (tokens),522.00
+Total Usage Prompt Tokens (tokens),59.00
+Total Usage Total Tokens (tokens),581.00
+Usage Discrepancy Count,2.00
+
+
+Endpoint,GPU_Index,GPU_Name,GPU_UUID,Platform,Metric,avg,min,max,sum,p1,p5,p10,p25,p50,p75,p90,p95,p99,std
