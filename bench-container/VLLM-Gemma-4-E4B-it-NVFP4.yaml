@@ -18,12 +18,14 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
+      # - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub # spark
+      - /home/philip/.cache/huggingface/hub:/root/.cache/huggingface/hub # wsl
     env_file:
       - ../.env # secrets only
     environment:
       - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-      - CUTE_DSL_ARCH=sm_121a
+      - VLLM_WSL2_ENABLE_PIN_MEMORY=1
+      # - CUTE_DSL_ARCH=sm_121a
     command: >
       --model unsloth/gemma-4-E4B-it-NVFP4
       --gpu-memory-utilization 0.6
