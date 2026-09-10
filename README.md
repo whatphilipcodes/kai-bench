@@ -1,5 +1,8 @@
 # kai-bench module
 
+```sh
+docker compose -f <file>.yaml up
+```
 
 ### Call w/ Moritz
 
@@ -17,7 +20,6 @@ https://huggingface.co/Qwen/Qwen3.5-4B
     - Qwen 3 8B
 - ARDY auf Spark?
 
-
 ### Spark Specs
 NVIDIA DGX Spark
 - Architecture:
@@ -26,3 +28,34 @@ NVIDIA DGX Spark
 - Chip / Processor: GB10
 - Memory Capacity: 128 GB
 - Bandwidth: 273 GB/s
+
+### Links
+https://docs.nvidia.com/dgx/dgx-spark/release-notes.html
+https://vllm.ai/blog/2026-01-31-streaming-realtime#streaming-input-support-in-vllm
+https://ai-muninn.com/en/blog/series/dgx-spark
+https://spark-arena.com/
+https://github.com/omnia-projetcs/spark-dgx
+https://github.com/eugr/spark-vllm-docker
+https://sparkbench.dev/
+
+---
+
+./launch-cluster.sh --solo -p 8000:8000 \
+  -v /opt/huggingface_cache/hub:/root/.cache/huggingface/hub \
+  exec vllm serve unsloth/gemma-4-E4B-it-NVFP4
+
+
+
+https://note.com/fukuro_99/n/n26895f3edaad?hl=en
+https://ai-muninn.com/en/blog/dgx-spark-30w-power-safety-mode
+
+```sh
+nvidia-smi --query-gpu=power.draw,utilization.gpu,clocks.sm --format=csv,noheader -l 1
+```
+
+
+
+- JF mit anderen mittwoch?
+- wg office/ strom
+- openai api
+- RAG

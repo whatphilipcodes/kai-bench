@@ -1,0 +1,35 @@
+services:
+  sglang-node:
+    image: lmsysorg/sglang:latest-cu130
+    container_name: SGL-Gemma-4-26B-A4B-NVFP4
+    ipc: host
+    cap_add:
+      - SYS_NICE
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    ports:
+      - 8000:8000
+    volumes:
+      - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
+    env_file:
+      - ../.env # secrets only
+    environment:
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+    command: >
+      sglang serve nvidia/Gemma-4-26B-A4B-NVFP4
+      --host 0.0.0.0
+      --port 8000
+      --mem-fraction-static 0.2
+      --cuda-graph-max-bs-decode 8
+      --max-running-requests 2
+      --context-length 32768
+      --chunked-prefill-size 4096
+      --moe-runner-backend flashinfer_cutlass

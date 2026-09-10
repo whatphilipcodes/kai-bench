@@ -3,7 +3,7 @@ name = "bench-vllm"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.13"
 authors = [{ name = "whatphilipcodes", email = "gerdes.philip@gmail.com" }]
 dependencies = [
   "flashinfer-python>=0.6.16.post3",
@@ -12,7 +12,7 @@ dependencies = [
   "torchaudio>=2.11.0",
   "torchcodec>=0.16.0",
   "torchvision>=0.28.0",
-  "vllm>=0.28.0",
+  "vllm[b12x,audio]",
 ]
 
 [project.scripts]
@@ -33,6 +33,7 @@ prerelease = "allow"
 environments = ["sys_platform == 'linux' and platform_machine == 'aarch64'"]
 
 [tool.uv.sources]
+vllm = { index = "vllm-nightly" }
 torch = { index = "pytorch-cu130" }
 torchcodec = { index = "pytorch-cu130" }
 torchaudio = { index = "pytorch-cu130" }
@@ -41,4 +42,9 @@ torchvision = { index = "pytorch-cu130" }
 [[tool.uv.index]]
 name = "pytorch-cu130"
 url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[[tool.uv.index]]
+name = "vllm-nightly"
+url = "https://wheels.vllm.ai/nightly/cu130/"
 explicit = true

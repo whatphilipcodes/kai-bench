@@ -1,0 +1,30 @@
+services:
+  sglang-node:
+    image: eugr/spark-vllm-b12x:latest
+    container_name: VLLM-Gemma-4-26B-A4B-NVFP4
+    ipc: host
+    cap_add:
+      - SYS_NICE
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    ports:
+      - 8000:8000
+    volumes:
+      - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
+    env_file:
+      - ../.env # secrets only
+    environment:
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - CUTE_DSL_ARCH=sm_121a
+    command: >
+      vllm serve nvidia/Gemma-4-26B-A4B-NVFP4
+      --gpu-memory-utilization 0.6
+      --max-model-len 32768
