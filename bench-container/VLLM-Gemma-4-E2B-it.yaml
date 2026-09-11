@@ -7,8 +7,11 @@ x-shared: &shared
   entrypoint: ["vllm", "serve"]
   command: >
     google/gemma-4-E2B-it
-    --gpu-memory-utilization 0.6
-    --max-model-len 32768
+    --gpu-memory-utilization 0.85
+    --max-model-len 8192
+    --enable-prefix-caching
+    --max-num-batched-tokens 8192
+    --attention-backend flashinfer
 
 services:
   spark:
