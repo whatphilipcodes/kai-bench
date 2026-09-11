@@ -1,36 +1,34 @@
+x-shared: &shared
+  extends:
+      file: all-base.yaml
+      service: base
+      
+  container_name: ATL-Qwen3-6-35B-A3B-NVFP4
+  image: avarok/atlas-gb10:latest
+  command: >
+    serve Sehyo/Qwen3.5-35B-A3B-NVFP4
+    --bind 0.0.0.0
+    --port 8000
+    --max-seq-len 65536
+    --kv-cache-dtype fp8
+    --kv-high-precision-layers auto
+    --gpu-memory-utilization 0.90
+    --scheduling-policy slai
+    --enable-prefix-caching
+    --speculative
+    --tool-call-parser qwen3_coder
+    --oom-guard-mb 8192
+    
 services:
-  atlas-node:
-    image: avarok/atlas-gb10:latest
-    container_name: ATL-Qwen3-6-35B-A3B-NVFP4
-    ipc: host
-    cap_add:
-      - SYS_NICE
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
-    ulimits:
-      memlock: -1
-      stack: 67108864
-    ports:
-      - 8000:8000
+  spark:
+    <<: *shared
+    environment:
+      - CUTE_DSL_ARCH=sm_121a
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
     volumes:
       - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
-    env_file:
-      - ../.env
-    command: >
-      serve Sehyo/Qwen3.5-35B-A3B-NVFP4
-      --bind 0.0.0.0
-      --port 8000
-      --max-seq-len 65536
-      --kv-cache-dtype fp8
-      --kv-high-precision-layers auto
-      --gpu-memory-utilization 0.90
-      --scheduling-policy slai
-      --enable-prefix-caching
-      --speculative
-      --tool-call-parser qwen3_coder
-      --oom-guard-mb 8192
+
+  wsl:
+    <<: *shared
+    volumes:
+      - /home/philip/.cache/huggingface/hub:/root/.cache/huggingface/hub
