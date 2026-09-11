@@ -13,8 +13,8 @@ BASE_URL="http://localhost:8000"
 PROMPT_PROCESSING="2048"
 TOKEN_GENERATION="128"
 CONCURRENCY="1 2"
+DEPTH="0 4096 8192 16384"
 # DEPTH="0"
-DEPTH="0 4096 8192 16384
 
 run_llama_benchy() {
   local tokenizer="${1}"
