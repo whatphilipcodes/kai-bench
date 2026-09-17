@@ -1,0 +1,29 @@
+x-shared: &shared
+  extends:
+    file: all-base.yaml
+    service: base
+    
+  container_name: VLLM-Gemma-4-12B-it-NVFP4
+  entrypoint: ["vllm", "serve"]
+  command: >
+    unsloth/gemma-4-12B-it-NVFP4
+    --gpu-memory-utilization 0.6
+    --max-model-len 32768
+
+services:
+  spark:
+    <<: *shared
+    image: eugr/spark-vllm-b12x:latest
+    environment:
+      - CUTE_DSL_ARCH=sm_121a
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+    volumes:
+      - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
+
+  wsl:
+    <<: *shared
+    image: vllm/vllm-openai:latest
+    environment:
+      - VLLM_WSL2_ENABLE_PIN_MEMORY=1
+    volumes:
+      - /home/philip/.cache/huggingface/hub:/root/.cache/huggingface/hub

@@ -6,5 +6,8 @@ readme = "README.md"
 requires-python = ">=3.12"
 authors = [{ name = "whatphilipcodes", email = "gerdes.philip@gmail.com" }]
 dependencies = [
-    "llama-benchy>=0.4.0",
+    "llama-benchy",
 ]
+
+[tool.uv.sources]
+llama-benchy = { git = "https://github.com/whatphilipcodes/llama-benchy", branch = "feat-strict-api" }

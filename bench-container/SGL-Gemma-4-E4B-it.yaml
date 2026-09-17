@@ -3,11 +3,11 @@ x-shared: &shared
       file: all-base.yaml
       service: base
 
-  container_name: SGL-Gemma-4-26B-A4B-NVFP4
+  container_name: SGL-Gemma-4-E4B-it-NVFP4
   image: lmsysorg/sglang:latest-cu130
   entrypoint: ["sglang", "serve"]
   command: >
-    nvidia/Gemma-4-26B-A4B-NVFP4
+    google/gemma-4-E4B-it
     --host 0.0.0.0
     --port 8000
     --mem-fraction-static 0.2

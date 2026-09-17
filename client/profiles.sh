@@ -31,6 +31,7 @@ run_llama_benchy() {
   local nvidia_smi_pid=$!
 
   uv run llama-benchy \
+    --strict-api \
     --base-url "$BASE_URL/v1" \
     --tokenizer "${tokenizer}" \
     --pp ${PROMPT_PROCESSING} \
@@ -39,7 +40,6 @@ run_llama_benchy() {
     --concurrency ${CONCURRENCY} \
     --latency-mode generation \
     --enable-prefix-caching \
-    --extra-body return_token_ids=false \
     --save-result "${artifact}"
 
   kill ${nvidia_smi_pid} 2>/dev/null

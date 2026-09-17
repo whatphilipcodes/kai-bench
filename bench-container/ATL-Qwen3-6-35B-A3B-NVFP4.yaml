@@ -5,14 +5,15 @@ x-shared: &shared
       
   container_name: ATL-Qwen3-6-35B-A3B-NVFP4
   image: avarok/atlas-gb10:latest
+  entrypoint: ["serve"]
   command: >
-    serve Sehyo/Qwen3.5-35B-A3B-NVFP4
+    Sehyo/Qwen3.5-35B-A3B-NVFP4
     --bind 0.0.0.0
     --port 8000
     --max-seq-len 65536
     --kv-cache-dtype fp8
     --kv-high-precision-layers auto
-    --gpu-memory-utilization 0.90
+    --gpu-memory-utilization 0.4
     --scheduling-policy slai
     --enable-prefix-caching
     --speculative
