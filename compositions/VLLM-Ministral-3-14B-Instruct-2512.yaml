@@ -1,0 +1,31 @@
+x-shared: &shared
+  extends:
+    file: all-base.yaml
+    service: base
+    
+  container_name: VLLM-Ministral-3-14B-Instruct-2512
+  entrypoint: ["vllm", "serve"]
+  command: >
+    mistralai/Ministral-3-14B-Instruct-2512
+    --tokenizer_mode mistral
+    --config_format mistral
+    --load_format mistral
+    --tensor-parallel-size 1
+    --gpu-memory-utilization 0.6
+  # environment:
+  #     - VLLM_USE_RUST_FRONTEND=1
+
+services:
+  spark:
+    <<: *shared
+    image: eugr/spark-vllm-b12x:latest
+    volumes:
+      - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
+
+  wsl:
+    <<: *shared
+    image: vllm/vllm-openai:latest
+    environment:
+      - VLLM_WSL2_ENABLE_PIN_MEMORY=1
+    volumes:
+      - /home/philip/.cache/huggingface/hub:/root/.cache/huggingface/hub
