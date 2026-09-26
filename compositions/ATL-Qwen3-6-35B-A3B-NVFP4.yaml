@@ -5,9 +5,8 @@ x-shared: &shared
       
   container_name: ATL-Qwen3-6-35B-A3B-NVFP4
   image: avarok/atlas-gb10:latest
-  entrypoint: ["serve"]
   command: >
-    Sehyo/Qwen3.5-35B-A3B-NVFP4
+    serve Sehyo/Qwen3.5-35B-A3B-NVFP4
     --bind 0.0.0.0
     --port 8000
     --max-seq-len 65536

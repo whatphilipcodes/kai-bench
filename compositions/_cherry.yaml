@@ -1,0 +1,38 @@
+x-shared: &shared
+  extends:
+    file: all-base.yaml
+    service: base
+    
+  container_name: Cherry
+  entrypoint: ["vllm", "serve"]
+  command: >
+    unsloth/gemma-4-26B-A4B-it-NVFP4
+    --gpu-memory-utilization 0.8
+    --max-model-len 262144
+    --max-num-seqs 8
+    --max-num-batched-tokens 8192
+    --enable-prefix-caching
+    --load-format fastsafetensors
+    --tensor-parallel-size 1
+    --moe-backend flashinfer_b12x
+    --speculative-config '{"method":"mtp","model":"google/gemma-4-26B-A4B-it-assistant","num_speculative_tokens":4,"moe_backend":"triton"}'
+    --enable-auto-tool-choice
+    --tool-call-parser gemma4
+
+services:
+  spark:
+    <<: *shared
+    image: eugr/spark-vllm-b12x:latest
+    environment:
+      - CUTE_DSL_ARCH=sm_121a
+      # - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+    volumes:
+      - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
+
+  wsl:
+    <<: *shared
+    image: vllm/vllm-openai:latest
+    environment:
+      - VLLM_WSL2_ENABLE_PIN_MEMORY=1
+    volumes:
+      - /home/philip/.cache/huggingface/hub:/root/.cache/huggingface/hub

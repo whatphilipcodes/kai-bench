@@ -1,0 +1,25 @@
+x-shared: &shared
+  extends:
+      file: all-base.yaml
+      service: base
+
+  container_name: SGL-Gemma-4-26B-A4B-it-GGUF
+  image: ghcr.io/ggml-org/llama.cpp:full-cuda13
+  entrypoint: ["/app/llama-server"]
+  command: >
+    --hf-repo unsloth/gemma-4-26B-A4B-it-GGUF
+    --host 0.0.0.0
+    --port 8000
+    
+services:
+  spark:
+    <<: *shared
+    environment:
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+    volumes:
+      - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
+      
+  wsl:
+    <<: *shared
+    volumes:
+      - /home/philip/.cache/huggingface/hub:/root/.cache/huggingface/hub

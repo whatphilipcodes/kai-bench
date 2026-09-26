@@ -1,0 +1,23 @@
+x-shared: &shared
+  extends:
+      file: all-base.yaml
+      service: base
+      
+  container_name: ATL-Gemma-4-26A4B-NVFP4
+  image: avarok/atlas-gb10:latest
+  command: >
+    serve bg-digitalservices/Gemma-4-26B-A4B-it-NVFP4
+    --bind 0.0.0.0
+    --port 8000
+    --gpu-memory-utilization 0.88
+    --max-batch-size 4
+    --kv-cache-dtype fp8
+    --scheduling-policy slai
+    --max-seq-len 32768
+    --max-num-seqs 8192
+    
+services:
+  spark:
+    <<: *shared
+    volumes:
+      - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
