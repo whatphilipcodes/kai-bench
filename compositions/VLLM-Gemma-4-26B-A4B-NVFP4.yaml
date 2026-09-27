@@ -7,16 +7,13 @@ x-shared: &shared
   entrypoint: ["vllm", "serve"]
   command: >
     nvidia/gemma-4-26B-A4B-NVFP4
-    --gpu-memory-utilization 0.6
-    --max-model-len 32768
+    --gpu-memory-utilization 0.8
+    --max-model-len 65536
 
 services:
   spark:
     <<: *shared
     image: eugr/spark-vllm-b12x:latest
-    environment:
-      - CUTE_DSL_ARCH=sm_121a
-      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
     volumes:
       - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
 

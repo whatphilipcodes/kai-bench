@@ -30,6 +30,18 @@ run_llama_benchy() {
   nvidia-smi --query-gpu=timestamp,power.draw,utilization.gpu,clocks.sm --format=csv,noheader -l 1 > "${tmp_gpu_log}" &
   local nvidia_smi_pid=$!
 
+  # warmup
+  uv run llama-benchy \
+    --strict-api \
+    --base-url "$BASE_URL/v1" \
+    --tokenizer "${tokenizer}" \
+    --pp 2048 \
+    --depth 0 \
+    --tg 128 \
+    --latency-mode generation \
+    --enable-prefix-caching
+
+  # benchmark
   uv run llama-benchy \
     --strict-api \
     --base-url "$BASE_URL/v1" \

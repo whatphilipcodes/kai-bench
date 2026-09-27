@@ -3,10 +3,10 @@ x-shared: &shared
     file: all-base.yaml
     service: base
     
-  container_name: VLLM-Gemma-4-E4B-it-NVFP4
+  container_name: VLLM-Gemma-4-26B-A4B-it
   entrypoint: ["vllm", "serve"]
   command: >
-    unsloth/gemma-4-E2B-it-NVFP4
+    google/gemma-4-26B-A4B-it
     --gpu-memory-utilization 0.8
     --max-model-len 65536
 

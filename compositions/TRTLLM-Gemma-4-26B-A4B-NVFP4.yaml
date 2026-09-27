@@ -3,11 +3,11 @@ x-shared: &shared
     file: all-base.yaml
     service: base
     
-  container_name: TRTLM-Gemma-4-12B-it
+  container_name: TRTLLM-Gemma-4-26B-A4B-NVFP4
   image: nvcr.io/nvidia/tensorrt-llm/release:1.3.0rc28
   entrypoint: ["trtllm-serve"]
   command: >
-    google/gemma-4-12B-it
+    nvidia/Gemma-4-26B-A4B-NVFP4
     --host 0.0.0.0
     --port 8000
     --extra_llm_api_options /opt/gemma-fix.yaml

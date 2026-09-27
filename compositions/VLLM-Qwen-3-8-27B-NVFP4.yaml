@@ -3,12 +3,10 @@ x-shared: &shared
     file: all-base.yaml
     service: base
     
-  container_name: VLLM-Gemma-4-E4B-it-NVFP4
+  container_name: VLLM-Qwen-3-8-27B-NVFP4
   entrypoint: ["vllm", "serve"]
   command: >
-    unsloth/gemma-4-E2B-it-NVFP4
-    --gpu-memory-utilization 0.8
-    --max-model-len 65536
+    unsloth/Qwen3.8-27B-NVFP4
 
 services:
   spark:

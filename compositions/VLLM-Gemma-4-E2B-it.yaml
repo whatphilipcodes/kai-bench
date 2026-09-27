@@ -7,19 +7,13 @@ x-shared: &shared
   entrypoint: ["vllm", "serve"]
   command: >
     google/gemma-4-E2B-it
-    --gpu-memory-utilization 0.85
-    --max-model-len 8192
-    --enable-prefix-caching
-    --max-num-batched-tokens 8192
-    --attention-backend flashinfer
+    --gpu-memory-utilization 0.8
+    --max-model-len 65536
 
 services:
   spark:
     <<: *shared
     image: eugr/spark-vllm-b12x:latest
-    environment:
-      - CUTE_DSL_ARCH=sm_121a
-      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
     volumes:
       - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
 

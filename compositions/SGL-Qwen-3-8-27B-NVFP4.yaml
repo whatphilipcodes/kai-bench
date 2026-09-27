@@ -1,25 +1,24 @@
 x-shared: &shared
   extends:
-    file: all-base.yaml
-    service: base
-    
-  container_name: TRTLM-Qwen3-14B-FP4
-  image: nvcr.io/nvidia/tensorrt-llm/release:1.3.0rc26.dev202609050001
-  entrypoint: ["trtllm-serve", "serve"]
+      file: all-base.yaml
+      service: base
+
+  container_name: SGL-Gemma-12B-it
+  image: lmsysorg/sglang:nightly-cu134
+  entrypoint: ["sglang", "serve"]
   command: >
-    nvidia/Qwen3-14B-FP4
+    unsloth/Qwen3.8-27B-NVFP4
     --host 0.0.0.0
     --port 8000
-    --trust_remote_code
-
+    
 services:
   spark:
     <<: *shared
     environment:
-      - PYTORCH_ALLOC_CONF=expandable_segments:True
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
     volumes:
       - /opt/huggingface_cache/hub:/root/.cache/huggingface/hub
-
+      
   wsl:
     <<: *shared
     volumes:
